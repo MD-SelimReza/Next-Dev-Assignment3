@@ -1,0 +1,21 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+node_modules/
+yarn.lock
+package-lock.json
+
+# Logs
+logs/
+*.log
+
+# Compiled output
+dist/
+build/
+out/
+
+# Vercel
+.vercel
