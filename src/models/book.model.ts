@@ -17,6 +17,8 @@ export interface IBook extends Document {
   description?: string;
   copies: number;
   available: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const bookSchema = new Schema<IBook>(

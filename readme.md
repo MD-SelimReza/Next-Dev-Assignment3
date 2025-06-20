@@ -52,7 +52,7 @@ src/
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/library-management-api.git
+git clone https://github.com/MD-SelimReza/Next-Dev-Assignment3.git
 cd library-management-api
 ```
 
@@ -83,7 +83,7 @@ The API will be running at `http://localhost:5000`.
 
 ### 📘 Book Endpoints
 
-### 1. Create Book
+### 1\. Create Book
 
 **POST** `/api/books`
 
@@ -115,11 +115,11 @@ Supports filtering, and sorting.
 
 ---
 
-### 3\. Get Book by IDMore actions
+### 3\. Get Book by ID
 
 **GET** `/api/books/:bookId`
 
-### 4\. Update BookMore actions
+### 4\. Update Book
 
 **PUT** `/api/books/:bookId`
 

@@ -27,7 +27,7 @@ export const getAllBooks = async (req: Request, res: Response) => {
       filter,
       sortBy = 'createdAt',
       sort = 'desc',
-      limit = 5,
+      limit = 10,
     } = req.query;
 
     const query: any = {};
@@ -121,7 +121,7 @@ export const deleteBookById = async (req: Request, res: Response) => {
     res.status(200).json({
       success: true,
       message: 'Book deleted successfully',
-      data: book ? book : null,
+      data: null,
     });
   } catch (error: any) {
     res.status(500).json({

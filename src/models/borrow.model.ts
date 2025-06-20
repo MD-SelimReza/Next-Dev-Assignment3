@@ -1,14 +1,16 @@
 import { Schema, model, Document, Types } from 'mongoose';
 
 export interface IBorrow extends Document {
-  bookId: Types.ObjectId;
+  book: Types.ObjectId;
   quantity: number;
   dueDate: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export const borrowSchema = new Schema<IBorrow>(
   {
-    bookId: {
+    book: {
       type: Schema.Types.ObjectId,
       ref: 'Book',
       required: [true, 'Book ID is required'],
@@ -31,7 +33,7 @@ export const borrowSchema = new Schema<IBorrow>(
 
 borrowSchema.post('save', async function (this: IBorrow) {
   const Book = model('Book');
-  const book = await Book.findById(this.bookId);
+  const book = await Book.findById(this.book);
   if (book) {
     book.copies -= this.quantity;
     book.available = book.copies > 0;

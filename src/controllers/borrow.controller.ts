@@ -9,14 +9,24 @@ export const borrowBook = async (req: Request, res: Response) => {
     if (!book) throw new Error('Book not found');
     if (book.copies < quantity) throw new Error('Not enough copies available');
     const borrow = await Borrow.create({
-      bookId: book,
+      book: book._id,
       quantity,
       dueDate,
     });
+
+    const responseData = {
+      _id: borrow._id,
+      book: borrow.book,
+      quantity: borrow.quantity,
+      dueDate: borrow.dueDate,
+      createdAt: borrow.createdAt,
+      updatedAt: borrow.updatedAt,
+    };
+
     res.status(201).json({
       success: true,
       message: 'Book borrowed successfully',
-      data: borrow,
+      data: responseData,
     });
   } catch (error) {
     res.status(400).json({ success: false, message: 'Borrow failed', error });
