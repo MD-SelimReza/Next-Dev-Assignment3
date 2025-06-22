@@ -29,7 +29,11 @@ export const borrowBook = async (req: Request, res: Response) => {
       data: responseData,
     });
   } catch (error) {
-    res.status(400).json({ success: false, message: 'Borrow failed', error });
+    res.status(400).json({
+      success: false,
+      message: 'Borrow failed. Not enough copies available',
+      error,
+    });
   }
 };
 
@@ -37,7 +41,7 @@ export const getBorrowSummary = async (_req: Request, res: Response) => {
   const summary = await Borrow.aggregate([
     {
       $group: {
-        _id: '$bookId',
+        _id: '$book',
         totalQuantity: { $sum: '$quantity' },
       },
     },
